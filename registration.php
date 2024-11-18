@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (!preg_match('/^[a-zA-Z]+$/', $fname)) {
+    if (!preg_match('/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/', $fname)) {
         $name_error = "Name can only contain uppercase and lowercase letters.";
     } 
     elseif (mysqli_num_rows(mysqli_query($con, "SELECT * FROM users WHERE email = '" . encryptEmail($email) . "'")) > 0) {
